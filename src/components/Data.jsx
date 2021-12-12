@@ -6,6 +6,8 @@ const Data = (props) => {
   const [isLoaded, setisLoaded] = useState(false);
   const [items, setitems] = useState([]);
 
+  // const [chosenImgId, setchosenImgId] = useState(-1);
+
   useEffect(() => {
     fetch("https://picsum.photos/v2/list?page=2&limit=100")
       .then((res) => res.json())
@@ -13,7 +15,6 @@ const Data = (props) => {
         (result) => {
           setisLoaded(true);
           setitems(result);
-          console.log(result);
         },
         (error) => {
           setisLoaded(true);
@@ -21,6 +22,14 @@ const Data = (props) => {
         }
       );
   }, []);
+
+  const passFunction = (id) => {
+    props.handleClick(items, id);
+    // props.upData(items);
+    // props.chosenImgId(id);
+    console.log(items);
+    console.log(id);
+  };
 
   if (error) {
     return <div>Ошибка: {error.message}</div>;
@@ -33,7 +42,7 @@ const Data = (props) => {
           <li key={item.id}>
             <div className="imgWrapper">
               <img
-                onClick={props.handleClick}
+                onClick={() => passFunction(item.id)}
                 className="img"
                 src={item.download_url}
                 alt={item.name}
