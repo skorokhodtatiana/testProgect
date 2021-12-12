@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./_modalWindow.scss";
 
 const ModalWindow = (props) => {
-  const { active, setActive, choseId, author, emptyInput } = props;
-  const [inputValue, setinputValue] = useState(emptyInput);
+  const { active, setActive, choseId, author } = props;
+  const [inputValue, setinputValue] = useState(" ");
 
   const sendInfo = async () => {
     let response = await fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -13,9 +13,7 @@ const ModalWindow = (props) => {
       },
       body: JSON.stringify({ body: inputValue }),
     });
-    console.log(response.status);
     if (response.status === 201) {
-      console.log("test");
       props.updataAfterDelete(choseId);
       setinputValue(" ");
     }
