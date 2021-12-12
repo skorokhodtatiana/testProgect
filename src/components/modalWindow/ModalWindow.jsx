@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./_modalWindow.scss";
 
 const ModalWindow = (props) => {
-  const { active, setActive, arrData, choseId, author, emptyInput } = props;
+  const { active, setActive, choseId, author, emptyInput } = props;
   const [inputValue, setinputValue] = useState(emptyInput);
 
   const sendInfo = async () => {
@@ -16,9 +16,8 @@ const ModalWindow = (props) => {
     console.log(response.status);
     if (response.status === 201) {
       console.log("test");
-      let newArr = arrData.filter((el) => el.id !== choseId);
-      props.updataAfterDelete(newArr, choseId);
-      setinputValue("");
+      props.updataAfterDelete(choseId);
+      setinputValue(" ");
     }
   };
   return (
@@ -27,13 +26,13 @@ const ModalWindow = (props) => {
       onClick={() => setActive(false)}
     >
       <div className="modal__content" onClick={(e) => e.stopPropagation()}>
-        <div>{author}</div>
+        <div className="modal__author">{author}</div>
         <input
           type="text"
-          value={emptyInput}
+          value={inputValue}
           onChange={(event) => setinputValue(event.target.value)}
         ></input>
-        <button onClick={() => sendInfo()} type="submit">
+        <button className="modal__btn" onClick={() => sendInfo()} type="submit">
           Отправить
         </button>
       </div>

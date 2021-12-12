@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import "./data.scss";
+import "./listImg.scss";
 
-const Data = (props) => {
+const ListImg = (props) => {
   const { isChangeArr, isSelectImg } = props;
   const [error, seterror] = useState(null);
   const [isLoaded, setisLoaded] = useState(false);
@@ -21,7 +21,6 @@ const Data = (props) => {
         }
       );
   }, []);
-  // console.log(updataArr);
   const passFunction = (id) => {
     props.handleClick(items, id);
   };
@@ -32,7 +31,7 @@ const Data = (props) => {
     return <div>Загрузка...</div>;
   } else {
     return (
-      <ul>
+      <ul className="listWrapper">
         {!isChangeArr
           ? items.map((item) => (
               <li key={item.id}>
@@ -65,4 +64,4 @@ const Data = (props) => {
   }
 };
 
-export default Data;
+export default ListImg;

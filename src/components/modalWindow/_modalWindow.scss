@@ -2,7 +2,6 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
-  // position: fixed;
   top: 0;
   display: flex;
   align-items: center;
@@ -12,9 +11,29 @@
   .modal__content {
     padding: 20px;
     border-radius: 12px;
-    background-color: aliceblue;
-    height: 400px;
-    width: 400px;
+    background-color: rgba(88, 69, 69, 0.8);
+    height: 200px;
+    width: 200px;
+
+    .modal__author {
+      font-size: 1.5rem;
+    }
+
+    .modal__btn {
+      border-radius: 5px;
+      background-color: rgb(133, 88, 103);
+
+      &:hover {
+        background-color: rgb(68, 49, 62);
+        border: 1px solid rgb(68, 49, 62);
+        background-color: rgb(68, 49, 62);
+        color: papayawhip;
+      }
+
+      &:active {
+        box-shadow: inset 1px 1px 10px -1px;
+      }
+    }
   }
 }
 

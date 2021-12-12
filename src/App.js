@@ -1,5 +1,5 @@
 import "./App.scss";
-import Data from "./components/Data.jsx";
+import ListImg from "./components/listImg/ListImg.jsx";
 
 import { useState } from "react";
 import ModalWindow from "./components/modalWindow/ModalWindow";
@@ -18,24 +18,20 @@ function App() {
     setSelectedAuthor(findAuthor[0].author);
   };
 
-  // const [arrAfterDelete, setarrAfterDelete] = useState();
   const [isChangeArr, setisChangeArr] = useState(false);
   const [isSelectImg, setisSelectImg] = useState(-1);
-  const updataAfterDelete = (newArr, choseId) => {
-    // setarrAfterDelete(newArr);
+  const updataAfterDelete = (choseId) => {
     setisChangeArr(true);
     setmodalActive(false);
     setisSelectImg(choseId);
-    console.log(newArr);
   };
   return (
     <div className="App">
-      <Data
+      <ListImg
         handleClick={(val, id) => openModal(val, id)}
-        // updataArr={arrAfterDelete}
         isChangeArr={isChangeArr}
         isSelectImg={isSelectImg}
-      ></Data>
+      ></ListImg>
       <ModalWindow
         author={selectedAuthor}
         arrData={newData}
