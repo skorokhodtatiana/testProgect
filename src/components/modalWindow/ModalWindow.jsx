@@ -1,21 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./_modalWindow.scss";
-//import Data from "../Data";
 
 const ModalWindow = (props) => {
   const { active, setActive, arrData, choseId, author, emptyInput } = props;
   const [inputValue, setinputValue] = useState(emptyInput);
-  // const [iaActive, setiaActive] = useState(false);
-
-  // const handleChange = (event) => {
-  //   setinputValue(event.target.value);
-  // };
 
   const sendInfo = async () => {
-    console.log(typeof inputValue);
-    console.log(inputValue);
-    console.log(JSON.stringify(inputValue));
-
     let response = await fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
       headers: {
@@ -23,18 +13,13 @@ const ModalWindow = (props) => {
       },
       body: JSON.stringify({ body: inputValue }),
     });
-    // .then((response) => console.log(response.json()))
-    // .then((responseUser) => {
-    //   console.log(responseUser);
-    // })
-    // let result = await response.json();
-    // .catch((error) => console.log(error.message));
-    console.log(response);
-
-    let newArr = arrData.filter((el) => el.id !== choseId);
-    console.log(newArr);
-    // props.updataAfterDelete(newArr);
-    // setiaActive(false);
+    console.log(response.status);
+    if (response.status === 201) {
+      console.log("test");
+      let newArr = arrData.filter((el) => el.id !== choseId);
+      props.updataAfterDelete(newArr, choseId);
+      setinputValue("");
+    }
   };
   return (
     <div

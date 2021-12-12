@@ -2,11 +2,10 @@ import { useState, useEffect } from "react";
 import "./data.scss";
 
 const Data = (props) => {
+  const { isChangeArr, isSelectImg } = props;
   const [error, seterror] = useState(null);
   const [isLoaded, setisLoaded] = useState(false);
   const [items, setitems] = useState([]);
-
-  // const [chosenImgId, setchosenImgId] = useState(-1);
 
   useEffect(() => {
     fetch("https://picsum.photos/v2/list?page=2&limit=100")
@@ -22,13 +21,9 @@ const Data = (props) => {
         }
       );
   }, []);
-
+  // console.log(updataArr);
   const passFunction = (id) => {
     props.handleClick(items, id);
-    // props.upData(items);
-    // props.chosenImgId(id);
-    console.log(items);
-    console.log(id);
   };
 
   if (error) {
@@ -38,18 +33,33 @@ const Data = (props) => {
   } else {
     return (
       <ul>
-        {items.map((item) => (
-          <li key={item.id}>
-            <div className="imgWrapper">
-              <img
-                onClick={() => passFunction(item.id)}
-                className="img"
-                src={item.download_url}
-                alt={item.name}
-              />
-            </div>
-          </li>
-        ))}
+        {!isChangeArr
+          ? items.map((item) => (
+              <li key={item.id}>
+                <div className="imgWrapper">
+                  <img
+                    onClick={() => passFunction(item.id)}
+                    className="img"
+                    src={item.download_url}
+                    alt={item.name}
+                  />
+                </div>
+              </li>
+            ))
+          : items
+              .filter((el) => el.id !== isSelectImg)
+              .map((item) => (
+                <li key={item.id}>
+                  <div className="imgWrapper">
+                    <img
+                      onClick={() => passFunction(item.id)}
+                      className="img"
+                      src={item.download_url}
+                      alt={item.name}
+                    />
+                  </div>
+                </li>
+              ))}
       </ul>
     );
   }

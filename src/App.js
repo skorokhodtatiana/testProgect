@@ -15,21 +15,26 @@ function App() {
     setNewData(val);
     setchosenImgId(id);
     let findAuthor = val.filter((el) => el.id === id);
-    // console.log(findAuthor);
-    // console.log(typeof findAuthor);
     setSelectedAuthor(findAuthor[0].author);
-    // console.log(findAuthor[0].author);
   };
 
-  const [arrAfterDelete, setarrAfterDelete] = useState();
-  const updataAfterDelete = (newArr) => {
-    setarrAfterDelete(newArr);
+  // const [arrAfterDelete, setarrAfterDelete] = useState();
+  const [isChangeArr, setisChangeArr] = useState(false);
+  const [isSelectImg, setisSelectImg] = useState(-1);
+  const updataAfterDelete = (newArr, choseId) => {
+    // setarrAfterDelete(newArr);
+    setisChangeArr(true);
+    setmodalActive(false);
+    setisSelectImg(choseId);
+    console.log(newArr);
   };
   return (
     <div className="App">
       <Data
         handleClick={(val, id) => openModal(val, id)}
-        updataAfterDelete={updataAfterDelete}
+        // updataArr={arrAfterDelete}
+        isChangeArr={isChangeArr}
+        isSelectImg={isSelectImg}
       ></Data>
       <ModalWindow
         author={selectedAuthor}
@@ -37,6 +42,7 @@ function App() {
         choseId={chosenImgId}
         active={modalActive}
         setActive={setmodalActive}
+        updataAfterDelete={updataAfterDelete}
       ></ModalWindow>
     </div>
   );
