@@ -1,15 +1,17 @@
 .listWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  li {
-    list-style-type: none;
-  }
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
-  .imgWrapper {
-    width: 40rem;
-    .img {
-      max-width: 100%;
-    }
-  }
+	li {
+		list-style-type: none;
+	}
+
+	.imgWrapper {
+		width: 40rem;
+
+		.img {
+			max-width: 100%;
+		}
+	}
 }

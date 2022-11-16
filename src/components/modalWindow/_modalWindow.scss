@@ -1,43 +1,43 @@
 .modal {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: scale(0);
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.4);
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform: scale(0);
 
-  .modal__content {
-    padding: 20px;
-    border-radius: 12px;
-    background-color: rgba(88, 69, 69, 0.8);
-    height: 200px;
-    width: 200px;
+	.modal__content {
+		padding: 20px;
+		border-radius: 12px;
+		background-color: rgba(88, 69, 69, 0.8);
+		height: 200px;
+		width: 200px;
 
-    .modal__author {
-      font-size: 1.5rem;
-    }
+		.modal__author {
+			font-size: 1.5rem;
+		}
 
-    .modal__btn {
-      border-radius: 5px;
-      background-color: rgb(133, 88, 103);
+		.modal__btn {
+			border-radius: 5px;
+			background-color: rgb(133, 88, 103);
 
-      &:hover {
-        background-color: rgb(68, 49, 62);
-        border: 1px solid rgb(68, 49, 62);
-        background-color: rgb(68, 49, 62);
-        color: papayawhip;
-      }
+			&:hover {
+			background-color: rgb(68, 49, 62);
+			border: 1px solid rgb(68, 49, 62);
+			background-color: rgb(68, 49, 62);
+			color: papayawhip;
+			}
 
-      &:active {
-        box-shadow: inset 1px 1px 10px -1px;
-      }
-    }
-  }
+			&:active {
+			box-shadow: inset 1px 1px 10px -1px;
+			}
+		}
+	}
 }
 
 .modal.active {
-  transform: scale(1);
-  position: fixed;
+	transform: scale(1);
+	position: fixed;
 }
