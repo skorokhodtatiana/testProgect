@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import "./listImg.scss";
 
 const ListImg = (props) => {

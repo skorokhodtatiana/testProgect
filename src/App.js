@@ -1,8 +1,8 @@
-import "./App.scss";
-import ListImg from "./components/listImg/ListImg.jsx";
-
 import { useState } from "react";
+import ListImg from "./components/listImg/ListImg.jsx";
 import ModalWindow from "./components/modalWindow/ModalWindow";
+
+import "./App.scss";
 
 function App() {
 	const [modalActive, setmodalActive] = useState(false);
@@ -20,6 +20,7 @@ function App() {
 
 	const [isChangeArr, setisChangeArr] = useState(false);
 	const [isSelectImg, setisSelectImg] = useState(-1);
+
 	const updataAfterDelete = (choseId) => {
 		setisChangeArr(true);
 		setmodalActive(false);
